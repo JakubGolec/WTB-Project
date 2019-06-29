@@ -1,19 +1,24 @@
 package com.WTBProject.user.model;
 import org.springframework.data.annotation.Id;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 
 @Entity
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
     String surname;
+    @Column(unique = true, nullable = false)
     String nick;
     String password;
+    @Column(unique = true, nullable = false)
     String email;
 
     public User(String name, String surname, String nick, String password, String email) {
