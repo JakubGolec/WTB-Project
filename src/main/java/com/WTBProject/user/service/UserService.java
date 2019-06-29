@@ -12,7 +12,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-@PropertySource("classpath:values.properties")
+//@PropertySource("classpath:values.properties")
 public class UserService {
     private final UserRepository userRepository;
     private ModelMapper modelMapper;
