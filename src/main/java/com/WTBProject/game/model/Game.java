@@ -1,17 +1,13 @@
 package com.WTBProject.game.model;
 
-
-import org.springframework.data.annotation.Id;
-
-
+import javax.persistence.Id;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "game")
+//@Table(name = "game") -> Entity czasem nie nazywa tabeli tak samo jak klasy? [Kuba]
 
 public class Game {
     @Id
@@ -20,7 +16,7 @@ public class Game {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "is big table required?", nullable = false)
+    @Column(name = "is_big_table_required?", nullable = false)
     private Boolean isBigTableRequired;
 
     public Game(String name, Boolean isBigTableRequired) {
