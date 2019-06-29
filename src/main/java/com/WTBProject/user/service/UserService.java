@@ -27,11 +27,9 @@ public class UserService {
 
     public List<UserDTO> getAllUsers() {
         List<User> allUsers = (List<User>) userRepository.findAll();
-        //UserDocument userDocument= new UserDocument();
-        //UserDTO map = modelMapper.map(userDocument, UserDTO.class);
 
         return allUsers.stream()
-                .map(userDocument -> modelMapper.map(userDocument, UserDTO.class))
+                .map(user -> modelMapper.map(user, UserDTO.class))
                 .collect(Collectors.toList());
     }
 
@@ -41,7 +39,7 @@ public class UserService {
         if (foundUserOption.isPresent()) {
             return modelMapper.map(foundUserOption.get(), UserDTO.class);
         }
-        throw new IllegalArgumentException("User with id not found");
+        throw new IllegalArgumentException("User with such id not found");
 
     }
 
@@ -50,14 +48,22 @@ public class UserService {
         return userRepository
                 .findByNameLikeOrderByNameAsc(queryString)
                 .stream()
-                .map(userDocument -> modelMapper.map(userDocument, UserDTO.class))
+                .map(user -> modelMapper.map(user, UserDTO.class))
                 .collect(Collectors.toList());
     }
 
 
     private boolean validateUser(UserDTO userDTO) {
         String name = userDTO.getName();
+        String surname = userDTO.getSurname();
+        String nick = userDTO.getNick();
         if (name.length() < 1 || name.length() > 100) {
+            return false;
+        }
+        if (surname.length() < 1 || surname.length() > 100) {
+            return false;
+        }
+        if (nick.length() < 3 || nick.length() > 100) {
             return false;
         }
 
@@ -71,10 +77,6 @@ public class UserService {
         return insertedUser.getId();
     }
 
-
-    public String saveUser(String userName) {
-        return "";
-    }
 
 }
 

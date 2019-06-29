@@ -28,7 +28,7 @@ public class UserController {
     @GetMapping("/allUsersPage")
     public String displayAllUsers(Model model) {
         List<UserDTO> allUserDTOS = userService.getAllUsers();
-        model.addAttribute("allStudents", allUserDTOS);
+        model.addAttribute("allUsers", allUserDTOS);
         model.addAttribute("newUser", new UserDTO());
         model.addAttribute("queryString", "");
         return "allUsersPage";
@@ -39,15 +39,15 @@ public class UserController {
     public String addNewUser(@ModelAttribute("newUser") UserDTO userDTO, Model model) {
         userService.saveUser(userDTO);
         List<UserDTO> updatedUserDTOList = userService.getAllUsers();
-        model.addAttribute("allStudents", updatedUserDTOList);
+        model.addAttribute("allUsers", updatedUserDTOList);
         return "redirect:/allUsersPage";
     }
 
     @GetMapping("/searchUserAction")
-    public String searchUserByName(String queryString, Model model) {
+    public String searchUserByNick(String queryString, Model model) {
         List<UserDTO> foundUsers = userService.findByQueryString(queryString);
 
-        model.addAttribute("allStudents", foundUsers);
+        model.addAttribute("allUsers", foundUsers);
         model.addAttribute("newUser", new UserDTO());
         model.addAttribute("queryString", "");
 
