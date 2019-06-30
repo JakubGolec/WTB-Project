@@ -43,6 +43,16 @@ public class UserService {
 
     }
 
+//    public UserDTO getUserByNickAndPassword(String nick, String password) {
+//        Optional<User> foundUserOption = userRepository.findRegisteredUser(nick, password);
+//
+//        if (foundUserOption.isPresent()) {
+//            return modelMapper.map(foundUserOption.get(), UserDTO.class);
+//        }
+//        throw new IllegalArgumentException("Wrong nick or password");
+//
+//    }
+
     public List<UserDTO> findByQueryString(String queryString) {
         List<User> foundUsers = userRepository.findByNameLikeOrderByNameAsc(queryString);
         return userRepository
