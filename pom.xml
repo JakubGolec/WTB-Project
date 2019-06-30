@@ -10,11 +10,11 @@
 		<relativePath/> <!-- lookup parent from repositories -->
 	</parent>
 
-	<groupId>com.sda</groupId>
-	<artifactId>javawro14</artifactId>
+	<groupId>com.WTBProject</groupId>
+	<artifactId>WTBProject</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>javawro14</name>
-	<description>Demo project for Spring Boot</description>
+	<name>WTBProject</name>
+	<description>Wargames Table Booker for Bolter Cafe, Wroclaw</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
