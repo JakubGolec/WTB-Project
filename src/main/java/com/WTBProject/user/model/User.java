@@ -1,10 +1,8 @@
 package com.WTBProject.user.model;
 
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import com.WTBProject.booking.model.BookingBigTable;
+
+import javax.persistence.*;
 
 @Entity
 public class User {
@@ -19,6 +17,12 @@ public class User {
     String password;
     @Column(unique = true, nullable = false)
     String email;
+
+
+    @OneToOne(mappedBy = "user")
+    private BookingBigTable booking;
+
+
 
     public User(String name, String surname, String nick, String password, String email) {
         this.name = name;

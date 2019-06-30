@@ -1,7 +1,8 @@
-package com.WTBProject.bigtable.model;
+package com.WTBProject.bigTable.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.WTBProject.booking.model.BookingBigTable;
+
+import javax.persistence.*;
 
 @Entity
 public class BigTable {
@@ -9,6 +10,9 @@ public class BigTable {
     @Id
     private String id;
     private Boolean isTableBig;
+
+    @OneToOne(mappedBy = "bigTable")
+    private BookingBigTable booking;
 
     public BigTable(String id, Boolean isTableBig) {
         this.id = id;

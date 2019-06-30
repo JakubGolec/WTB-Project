@@ -1,5 +1,7 @@
 package com.WTBProject.game.model;
 
+import com.WTBProject.booking.model.BookingBigTable;
+
 import javax.persistence.*;
 
 
@@ -14,6 +16,9 @@ public class Game {
 
     @Column(nullable = false)
     Boolean isBigTableRequired;
+
+    @OneToOne(mappedBy = "game")
+    private BookingBigTable booking;
 
     public Game(String name, Boolean isBigTableRequired) {
         this.name = name;
