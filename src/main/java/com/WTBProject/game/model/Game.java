@@ -1,6 +1,6 @@
 package com.WTBProject.game.model;
 
-import com.WTBProject.booking.model.BookingBigTable;
+import com.WTBProject.bookingBigTable.model.BookingBigTable;
 
 import javax.persistence.*;
 

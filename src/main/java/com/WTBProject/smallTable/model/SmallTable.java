@@ -1,25 +1,27 @@
-package com.WTBProject.bigTable.model;
+package com.WTBProject.smallTable.model;
 
-import com.WTBProject.bookingBigTable.model.BookingBigTable;
+import com.WTBProject.bookingSmallTable.model.BookingSmallTable;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
-public class BigTable {
+public class SmallTable {
 
     @Id
     private String id;
     private Boolean isTableBig;
 
-    @OneToOne(mappedBy = "bigTable")
-    private BookingBigTable booking;
+    @OneToOne(mappedBy = "smallTable")
+    private BookingSmallTable bookingSmallTable;
 
-    public BigTable(String id, Boolean isTableBig) {
+    public SmallTable(String id, Boolean isTableBig) {
         this.id = id;
         this.isTableBig = isTableBig;
     }
 
-    public BigTable() {
+    public SmallTable() {
     }
 
     public String getId() {
