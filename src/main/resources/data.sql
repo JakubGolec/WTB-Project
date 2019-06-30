@@ -1,0 +1,1 @@
+insert into game (name, is_Big_Table_Required) values ("Bijatyka morska", false)

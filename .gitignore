@@ -18,6 +18,8 @@ target/
 *.iws
 *.iml
 *.ipr
+node
+.node_modules
 
 ### NetBeans ###
 /nbproject/private/
@@ -29,3 +31,87 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Ustawienia uzytkownika:
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
+
+# Wazne dane prywatne, ktore nie powinny sie znalezc na gicie:
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.xml
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+
+# Gradle - builder czasami wykorzystywany:
+.idea/**/gradle.xml
+.idea/**/libraries
+
+## Stary format projektu:
+*.iws
+
+# IntelliJ
+/out/
+
+# Moduly
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Clojure plugin
+.idea/replstate.xml
+
+# Crashlytics plugin - analizator bledow
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+# Only exists if Bazel was run
+/bazel-out
+
+# dependencies
+/node_modules
+
+# profiling files
+chrome-profiler-events.json
+speed-measure-plugin.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
