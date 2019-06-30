@@ -1,23 +1,19 @@
 package com.WTBProject.game.model;
 
+import javax.persistence.*;
 
-import org.springframework.data.annotation.Id;
-
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 
 @Entity
 public class Game {
+
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
     @Column(nullable = false)
-    private String name;
+    String name;
 
     @Column(nullable = false)
-    private Boolean isBigTableRequired;
+    Boolean isBigTableRequired;
 
     public Game(String name, Boolean isBigTableRequired) {
         this.name = name;
@@ -51,12 +47,4 @@ public class Game {
         isBigTableRequired = bigTableRequired;
     }
 
-    @Override
-    public String toString() {
-        return "Game{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", isBigTableRequired=" + isBigTableRequired +
-                '}';
-    }
 }
