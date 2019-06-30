@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.text.ParseException;
-
 @Controller
 public class GameController {
 
@@ -24,7 +22,7 @@ public class GameController {
 
     @GetMapping("allGamesPage")
     public String getAllGamesPage(Model model) {
-        //model.addAttribute("allGames", gameService.getAllGames());
+        model.addAttribute("allGames", gameService.getAllGames());
         model.addAttribute("newGame", new GameDTO());
         return "allGamesPage";
     }
