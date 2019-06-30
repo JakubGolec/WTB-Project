@@ -47,12 +47,4 @@ public class Game {
         isBigTableRequired = bigTableRequired;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Game{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                ", isBigTableRequired=" + isBigTableRequired +
-//                '}';
-//    }
 }
