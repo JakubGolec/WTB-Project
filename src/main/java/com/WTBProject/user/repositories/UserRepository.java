@@ -10,4 +10,6 @@ public interface UserRepository extends CrudRepository<User, String> {
     User findByName(String userName);
 
     List<User> findByNameLikeOrderByNameAsc(String queryString);
+
+//    Optional findRegisteredUser(String nick, String password);
 }
