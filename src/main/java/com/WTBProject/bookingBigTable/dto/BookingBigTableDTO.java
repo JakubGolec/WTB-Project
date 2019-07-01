@@ -1,42 +1,35 @@
-package com.WTBProject.bookingSmallTable.model;
+package com.WTBProject.bookingBigTable.dto;
+
+
 import com.WTBProject.bigTable.model.BigTable;
 import com.WTBProject.game.model.Game;
-import com.WTBProject.smallTable.model.SmallTable;
 import com.WTBProject.user.model.User;
-
-import javax.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
-@Entity
-public class BookingSmallTable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class BookingBigTableDTO {
+
+
     private Long id;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endDate;
-
-
-    @OneToOne(fetch = FetchType.LAZY)
     private User user;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    private SmallTable smallTable;
-
-    @OneToOne(fetch = FetchType.LAZY)
+    private BigTable bigTable;
     private Game game;
 
-
-    public BookingSmallTable(Date startDate, Date endDate, User user, SmallTable smallTable, Game game) {
+    public BookingBigTableDTO(Long id, Date startDate, Date endDate, User user, BigTable bigTable, Game game) {
+        this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
         this.user = user;
-        this.smallTable = smallTable;
+        this.bigTable = bigTable;
         this.game = game;
     }
 
-    public BookingSmallTable() {
+    public BookingBigTableDTO() {
     }
 
     public Long getId() {
@@ -71,12 +64,12 @@ public class BookingSmallTable {
         this.user = user;
     }
 
-    public SmallTable getSmallTable() {
-        return smallTable;
+    public BigTable getBigTable() {
+        return bigTable;
     }
 
-    public void setSmallTable(SmallTable smallTable) {
-        this.smallTable = smallTable;
+    public void setBigTable(BigTable bigTable) {
+        this.bigTable = bigTable;
     }
 
     public Game getGame() {

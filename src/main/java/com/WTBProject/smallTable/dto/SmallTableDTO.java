@@ -2,20 +2,29 @@ package com.WTBProject.smallTable.dto;
 
 public class SmallTableDTO {
 
+  private String id;
 
-    private Boolean isTableBig;
+  public String getId() {
+    return id;
+  }
 
-    public SmallTableDTO(Boolean isTableBig) {
-        this.isTableBig = isTableBig;
-    }
+  public void setId(String id) {
+    this.id = id;
+  }
 
-    public Boolean getTableBig() {
-        return isTableBig;
-    }
+  private Boolean isTableBig;
 
-    public void setTableBig(Boolean tableBig) {
-        isTableBig = tableBig;
-    }
+  public SmallTableDTO(Boolean isTableBig) {
+    this.isTableBig = isTableBig;
+  }
+
+  public Boolean getTableBig() {
+    return isTableBig;
+  }
+
+  public void setTableBig(Boolean tableBig) {
+    isTableBig = tableBig;
+  }
 
 
 }
