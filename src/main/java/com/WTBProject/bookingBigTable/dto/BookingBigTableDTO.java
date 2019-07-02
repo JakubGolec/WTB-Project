@@ -1,6 +1,7 @@
 package com.WTBProject.bookingBigTable.dto;
 
 
+import com.WTBProject.bigTable.dto.BigTableDTO;
 import com.WTBProject.bigTable.model.BigTable;
 import com.WTBProject.game.model.Game;
 import com.WTBProject.user.model.User;
@@ -11,34 +12,26 @@ import java.util.Date;
 public class BookingBigTableDTO {
 
 
-    private Long id;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startDate;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endDate;
     private User user;
-    private BigTable bigTable;
+    private BigTableDTO bigTableDTO;
     private Game game;
 
-    public BookingBigTableDTO(Long id, Date startDate, Date endDate, User user, BigTable bigTable, Game game) {
-        this.id = id;
+    public BookingBigTableDTO(Date startDate, Date endDate, User user, BigTableDTO bigTableDTO, Game game) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.user = user;
-        this.bigTable = bigTable;
+        this.bigTableDTO = bigTableDTO;
         this.game = game;
     }
 
     public BookingBigTableDTO() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Date getStartDate() {
         return startDate;
@@ -64,12 +57,12 @@ public class BookingBigTableDTO {
         this.user = user;
     }
 
-    public BigTable getBigTable() {
-        return bigTable;
+    public BigTableDTO getBigTableDTO() {
+        return bigTableDTO;
     }
 
-    public void setBigTable(BigTable bigTable) {
-        this.bigTable = bigTable;
+    public void setBigTableDTO(BigTableDTO bigTableDTO) {
+        this.bigTableDTO = bigTableDTO;
     }
 
     public Game getGame() {

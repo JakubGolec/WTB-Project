@@ -55,7 +55,7 @@ public class BookingSmallTableDTO {
         this.user = user;
     }
 
-    public SmallTableDTO getSmallTable() {
+    public SmallTableDTO getSmallTableDTO() {
         return smallTableDTO;
     }
 

@@ -1,28 +1,17 @@
 package com.WTBProject.bookingBigTable.service;
 
-import com.WTBProject.bigTable.model.BigTable;
 import com.WTBProject.bookingBigTable.dto.BookingBigTableDTO;
 import com.WTBProject.bookingBigTable.model.BookingBigTable;
 import com.WTBProject.bookingBigTable.repositories.BookingBigTableRepository;
 import com.WTBProject.bookingSmallTable.dto.BookingSmallTableDTO;
-import com.WTBProject.bookingSmallTable.model.BookingSmallTable;
 import com.WTBProject.bookingSmallTable.repositories.BookingSmallTableRepository;
-import com.WTBProject.game.model.Game;
+import com.WTBProject.bookingSmallTable.service.BookingSmallTableService;
 import com.WTBProject.smallTable.dto.SmallTableDTO;
-import com.WTBProject.smallTable.model.SmallTable;
 import com.WTBProject.smallTable.repositories.SmallTableRepository;
-import com.WTBProject.user.model.User;
-import javafx.scene.control.Tab;
+import com.WTBProject.smallTable.service.SmallTableService;
 import org.modelmapper.ModelMapper;
-import org.springframework.data.rest.core.annotation.HandleAfterCreate;
 import org.springframework.data.rest.core.annotation.HandleAfterSave;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.event.TransactionalEventListener;
 import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
-
-import java.time.Instant;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.Optional;
 
 
@@ -35,6 +24,8 @@ public class BookingBigTableEventHandler {
   private BookingBigTableDTO bookingBigTableDTO;
   private SmallTableRepository smallTableRepository;
   private SmallTableDTO smallTableDTO;
+  private SmallTableService smallTableService;
+  private BookingSmallTableService bookingSmallTableService;
 
   @HandleAfterSave
   public void makeSmallTableReservation() {
@@ -43,20 +34,63 @@ public class BookingBigTableEventHandler {
 
     if (bookingBigTable.isPresent()) {
       bookingBigTableDTO = modelMapper.map(bookingBigTable.get(), BookingBigTableDTO.class);
+    } else {
+      throw new IllegalArgumentException("Brak rezerwacji w bazie");
     }
 
-
-    //todo Do zmiany stoły
-    Optional<SmallTable> smallTable = smallTableRepository.findById("I");
-    if (smallTable.isPresent()) {
-      smallTableDTO = modelMapper.map(smallTable.get(), SmallTableDTO.class);
+    switch (bookingBigTableDTO.getBigTableDTO().getId()) {
+      case "I":
+        insertSmallTables("1", "2");
+        break;
+      case "II":
+        insertSmallTables("2", "3");
+        break;
+      case "III":
+        insertSmallTables("4", "5");
+        break;
+      case "IV":
+        insertSmallTables("5", "6");
+        break;
+      case "V":
+        insertSmallTables("7", "8");
+        break;
+      case "VI":
+        insertSmallTables("8", "9");
+        break;
+      case "VII":
+        insertSmallTables("10");
+        break;
+      case "VIII":
+        insertSmallTables("11");
+        break;
+      case "IX":
+        insertSmallTables("12");
+        break;
+      case "X":
+        insertSmallTables("13", "14");
+        break;
+      case "XI":
+        insertSmallTables("14", "15");
+        break;
     }
+  }
 
+  private void insertSmallTables(String id1, String id2) {
+    SmallTableDTO smallTableDTO1 = smallTableService.getSmallTableById(id1);
+    SmallTableDTO smallTableDTO2 = smallTableService.getSmallTableById(id2);
+
+    BookingSmallTableDTO bookingSmallTableDTO1 = new BookingSmallTableDTO(bookingBigTableDTO.getStartDate(), bookingBigTableDTO.getEndDate(), bookingBigTableDTO.getUser(), smallTableDTO1, bookingBigTableDTO.getGame());
+    BookingSmallTableDTO bookingSmallTableDTO2 = new BookingSmallTableDTO(bookingBigTableDTO.getStartDate(), bookingBigTableDTO.getEndDate(), bookingBigTableDTO.getUser(), smallTableDTO2, bookingBigTableDTO.getGame());
+
+    bookingSmallTableService.saveBookingSmallTable(bookingSmallTableDTO1);
+    bookingSmallTableService.saveBookingSmallTable(bookingSmallTableDTO2);
+  }
+
+  private void insertSmallTables(String id) {
+    SmallTableDTO smallTableDTO = smallTableService.getSmallTableById(id);
     BookingSmallTableDTO bookingSmallTableDTO = new BookingSmallTableDTO(bookingBigTableDTO.getStartDate(), bookingBigTableDTO.getEndDate(), bookingBigTableDTO.getUser(), smallTableDTO, bookingBigTableDTO.getGame());
-
-    BookingSmallTable bookingSmallTable = modelMapper.map(bookingSmallTableDTO, BookingSmallTable.class);
-
-    bookingSmallTableRepository.save(bookingSmallTable);
+    bookingSmallTableService.saveBookingSmallTable(bookingSmallTableDTO);
 
   }
+
 }
