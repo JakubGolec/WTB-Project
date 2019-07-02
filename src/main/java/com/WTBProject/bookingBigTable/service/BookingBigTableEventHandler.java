@@ -11,6 +11,7 @@ import com.WTBProject.smallTable.repositories.SmallTableRepository;
 import com.WTBProject.smallTable.service.SmallTableService;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.rest.core.annotation.HandleAfterSave;
+import org.springframework.data.rest.core.annotation.HandleBeforeSave;
 import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
 import java.util.Optional;
 
@@ -26,6 +27,12 @@ public class BookingBigTableEventHandler {
   private SmallTableDTO smallTableDTO;
   private SmallTableService smallTableService;
   private BookingSmallTableService bookingSmallTableService;
+
+
+  @HandleBeforeSave
+  public void checkIfReservationCouldBeDone(){
+
+  }
 
   @HandleAfterSave
   public void makeSmallTableReservation() {

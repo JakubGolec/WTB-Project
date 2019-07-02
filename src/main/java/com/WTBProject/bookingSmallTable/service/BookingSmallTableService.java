@@ -21,15 +21,13 @@ public class BookingSmallTableService {
     this.modelMapper = modelMapper;
   }
 
-  public Long makeReservation(BookingSmallTableDTO bookingSmallTableDTO){
-    BookingSmallTable bookingSmallTable = modelMapper.map(bookingSmallTableDTO, BookingSmallTable.class);
-    BookingSmallTable insertedSmallTableBooking = bookingSmallTableRepository.save(bookingSmallTable);
-    return insertedSmallTableBooking.getId();
-  }
 
   public Long saveBookingSmallTable(BookingSmallTableDTO bookingSmallTableDTO) {
     BookingSmallTable bookingSmallTable = modelMapper.map(bookingSmallTableDTO, BookingSmallTable.class);
-    BookingSmallTable insertedBookingSmallTable = bookingSmallTableRepository.save(bookingSmallTable);
-    return insertedBookingSmallTable.getId();
+    if(!bookingSmallTableRepository.findBySmallTableAndStartDateAndEndDate(bookingSmallTable.getSmallTable(), bookingSmallTable.getStartDate(), bookingSmallTable.getEndDate()).isPresent()){
+      BookingSmallTable insertedBookingSmallTable = bookingSmallTableRepository.save(bookingSmallTable);
+      return insertedBookingSmallTable.getId();
+    }
+    throw new IllegalArgumentException("Table already booked");
   }
 }
