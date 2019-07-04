@@ -2,7 +2,15 @@ package com.WTBProject.bigTable.dto;
 
 public class BigTableDTO {
 
-private String id;
+  public BigTableDTO(String id, Boolean isTableBig) {
+    this.id = id;
+    this.isTableBig = isTableBig;
+  }
+
+  public BigTableDTO() {
+  }
+
+  private String id;
 
   public String getId() {
     return id;
@@ -14,17 +22,17 @@ private String id;
 
   private Boolean isTableBig;
 
-    public BigTableDTO(Boolean isTableBig) {
-        this.isTableBig = isTableBig;
-    }
+  public BigTableDTO(Boolean isTableBig) {
+    this.isTableBig = isTableBig;
+  }
 
-    public Boolean getTableBig() {
-        return isTableBig;
-    }
+  public Boolean getTableBig() {
+    return isTableBig;
+  }
 
-    public void setTableBig(Boolean tableBig) {
-        isTableBig = tableBig;
-    }
+  public void setTableBig(Boolean tableBig) {
+    isTableBig = tableBig;
+  }
 
 
 }

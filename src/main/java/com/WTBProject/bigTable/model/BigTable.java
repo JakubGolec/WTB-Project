@@ -5,6 +5,7 @@ import com.WTBProject.bookingBigTable.model.BookingBigTable;
 import javax.persistence.*;
 
 @Entity
+@NamedQuery(name = "getAllBigTables", query = "Select bt from BigTable bt")
 public class BigTable {
 
     @Id

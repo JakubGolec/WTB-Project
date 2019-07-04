@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -35,6 +37,17 @@ public class BigTableService {
     } else {
       throw new IllegalArgumentException("Big table with such id not found");
     }
+  }
+
+  public List<BigTableDTO> findAll(){
+    List<BigTableDTO> bigTableDTOS = new ArrayList<>();
+    List<BigTable> bigTable = bigTableRepository.findAll();
+    if(!bigTable.isEmpty()){
+      for (BigTable bT:bigTable){
+        bigTableDTOS.add(modelMapper.map(bT, BigTableDTO.class));
+      }
+    }
+    return bigTableDTOS;
   }
 }
 
