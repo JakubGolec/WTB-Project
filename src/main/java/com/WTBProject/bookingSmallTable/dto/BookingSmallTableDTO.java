@@ -1,51 +1,35 @@
-package com.WTBProject.bookingSmallTable.model;
-import com.WTBProject.bigTable.model.BigTable;
+package com.WTBProject.bookingSmallTable.dto;
+
 import com.WTBProject.game.model.Game;
+import com.WTBProject.smallTable.dto.SmallTableDTO;
 import com.WTBProject.smallTable.model.SmallTable;
 import com.WTBProject.user.model.User;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-public class BookingSmallTable {
+public class BookingSmallTableDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endDate;
-
-
-    @OneToOne(fetch = FetchType.LAZY)
     private User user;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    private SmallTable smallTable;
-
-    @OneToOne(fetch = FetchType.LAZY)
+    private SmallTableDTO smallTableDTO;
     private Game game;
 
-
-    public BookingSmallTable(Date startDate, Date endDate, User user, SmallTable smallTable, Game game) {
+    public BookingSmallTableDTO(Date startDate, Date endDate, User user, SmallTableDTO smallTableDTO, Game game) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.user = user;
-        this.smallTable = smallTable;
+        this.smallTableDTO = smallTableDTO;
         this.game = game;
     }
 
-    public BookingSmallTable() {
+    public BookingSmallTableDTO() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Date getStartDate() {
         return startDate;
@@ -71,12 +55,12 @@ public class BookingSmallTable {
         this.user = user;
     }
 
-    public SmallTable getSmallTable() {
-        return smallTable;
+    public SmallTableDTO getSmallTableDTO() {
+        return smallTableDTO;
     }
 
     public void setSmallTable(SmallTable smallTable) {
-        this.smallTable = smallTable;
+        this.smallTableDTO = smallTableDTO;
     }
 
     public Game getGame() {
