@@ -8,6 +8,7 @@ import {AppRoutingModule} from "app/app.routing-module";
 import {HomeComponent} from "app/pages/home/home.component";
 import {LoginComponent} from "app/pages/login/login.component";
 import {SignupComponent} from "app/pages/signup/signup.component";
+import {NgbdModalStackedModule} from "app/pages/modal-stacked/modal-stacked.module";
 
 @NgModule({
   declarations: [
@@ -15,13 +16,14 @@ import {SignupComponent} from "app/pages/signup/signup.component";
     BigTableListService,
     HomeComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbdModalStackedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

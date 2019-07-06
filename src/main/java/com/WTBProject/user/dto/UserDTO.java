@@ -9,16 +9,19 @@ public class UserDTO {
     String password;
     String email;
 
-    public UserDTO(String name, String surname, String nick, String password, String email) {
-        this.name = name;
-        this.surname = surname;
-        this.nick = nick;
-        this.password = password;
-        this.email = email;
-    }
+  public UserDTO(String name, String surname, String nick, String password, String email) {
+    this.name = name;
+    this.surname = surname;
+    this.nick = nick;
+    this.password = password;
 
-    public UserDTO() {
-    }
+    this.email = email;
+  }
+  public UserDTO(String name) {
+    this.name = name;
+  }
+  public UserDTO() {
+  }
 
     public Long getId() {
         return id;
