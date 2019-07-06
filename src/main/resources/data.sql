@@ -1,8 +1,3 @@
-
-#
-
-
-
 # insert into game (name, is_Big_Table_Required) values ("Bijatyka morska", false);
 # insert into big_Table (id, is_table_big)values ("I", true);
 # insert into big_Table (id, is_table_big)values ("II", true);
@@ -31,4 +26,5 @@
 # insert into small_Table (id, is_table_big) values ("13", false);
 # insert into small_Table (id, is_table_big) values ("14", false);
 # insert into small_Table (id, is_table_big) values ("15", false);
-#
+# insert into user (name, surname, nick, password, email) values ("tomek", "tomek", "tomek", "tomek", "nalesnniki@o2.pl");
+# insert into user (name, surname, nick, password, email) values ("admin", "admin", "admin", "admin", "admin@o2.pl");
