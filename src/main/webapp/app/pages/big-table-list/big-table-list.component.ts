@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {BigTableService} from "app/big-table.service";
+import {BigTableService} from "app/services/big-table/big-table.service";
 
 
 @Component({
