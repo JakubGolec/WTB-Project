@@ -29,7 +29,7 @@ public class UserController {
     public String displayAllUsers(Model model) {
         List<UserDTO> allUserDTOS = userService.getAllUsers();
         model.addAttribute("allUsers", allUserDTOS);
-        model.addAttribute("newUser", new UserDTO());
+        model.addAttribute("newUser", new UserDTO("admin"));
         model.addAttribute("queryString", "");
         return "allUsersPage";
     }
@@ -48,7 +48,7 @@ public class UserController {
         List<UserDTO> foundUsers = userService.findByQueryString(queryString);
 
         model.addAttribute("allUsers", foundUsers);
-        model.addAttribute("newUser", new UserDTO());
+        model.addAttribute("newUser", new UserDTO("admin"));
         model.addAttribute("queryString", "");
 
         return "allUsersPage";

@@ -1,23 +1,24 @@
 package com.WTBProject.game.model;
 
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import com.WTBProject.bookingBigTable.model.BookingBigTable;
+
+import javax.persistence.*;
 
 
 @Entity
-//@Table(name = "game") -> Entity czasem nie nazywa tabeli tak samo jak klasy? [Kuba]
-
 public class Game {
-    @Id
-    @GeneratedValue
-    private Long id;
-    @Column(name = "name", nullable = false)
-    private String name;
 
-    @Column(name = "is_big_table_required?", nullable = false)
-    private Boolean isBigTableRequired;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+    @Column(nullable = false)
+    String name;
+
+    @Column(nullable = false)
+    Boolean isBigTableRequired;
+
+    @OneToOne(mappedBy = "game")
+    private BookingBigTable booking;
 
     public Game(String name, Boolean isBigTableRequired) {
         this.name = name;
@@ -51,12 +52,4 @@ public class Game {
         isBigTableRequired = bigTableRequired;
     }
 
-    @Override
-    public String toString() {
-        return "Game{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", isBigTableRequired=" + isBigTableRequired +
-                '}';
-    }
 }
