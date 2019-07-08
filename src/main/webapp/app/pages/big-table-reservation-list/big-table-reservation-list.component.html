@@ -1,0 +1,23 @@
+<p>Rezerwacje</p>
+
+<table class="table table-bordered table-striped">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Początek</th>
+    <th scope="col">Koniec</th>
+    <th scope="col">Gra</th>
+    <th scope="col">Zarezerwowane przez</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let bigTableReservation of allReservations">
+    <td>{{ bigTableReservation.id}}</td>
+    <td>{{ bigTableReservation.startDate | date:"dd/MM/yyyy H:mm"}}</td>
+    <td>{{ bigTableReservation.endDate | date:"dd/MM/yyyy H:mm"}}</td>
+    <td>{{ bigTableReservation.game.name}}</td>
+    <td>{{ bigTableReservation.user.nick}}</td>
+  </tr>
+  </tbody>
+</table>
+

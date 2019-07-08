@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {Component} from '@angular/core';
+import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {BigTableReservationListService} from "app/pages/big-table-reservation-list/big-table-reservation-list.component";
 
 // MODAL nr 1 - właściwości
 @Component({
@@ -12,16 +13,25 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
     </div>
     <div class="modal-body">
       <p>Lista Rezerwacji</p>
-      <p><button class="btn btn-lg btn-outline-primary" (click)="open()">Zarezerwuj</button></p>
+
+
+      <app-big-table-reservation-list></app-big-table-reservation-list>
+
+      <p>
+        <button class="btn btn-lg btn-outline-primary" (click)="open()">Zarezerwuj</button>
+      </p>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Zamknij</button>
     </div>
   `
+
 })
 
 export class NgbdModal1Content {
-  constructor(private modalService: NgbModal, public activeModal: NgbActiveModal) {}
+  constructor(private modalService: NgbModal, public activeModal: NgbActiveModal) {
+  }
+
   open() {
     this.modalService.open(NgbdModal2Content, {
       size: 'sm'
@@ -33,13 +43,14 @@ export class NgbdModal1Content {
 @Component({
   template: `
     <div class="modal-header">
-      <h4 class="modal-title">Wybierz godzinę</h4>
+      <h4 class="modal-title">Wybierz godziny rezerwacji</h4>
       <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      <p>A tu trzeba wcisnąć wybór godzin</p>
+<app-pages-reservation></app-pages-reservation>
+<!--      <time-picker></time-picker>-->
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
@@ -47,7 +58,8 @@ export class NgbdModal1Content {
   `
 })
 export class NgbdModal2Content {
-  constructor(public activeModal: NgbActiveModal) {}
+  constructor(public activeModal: NgbActiveModal) {
+  }
 }
 
 @Component({
@@ -55,9 +67,18 @@ export class NgbdModal2Content {
   templateUrl: './modal-stacked.html'
 })
 export class NgbdModalStacked {
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal) {
+  }
 
   open() {
     this.modalService.open(NgbdModal1Content);
   }
 }
+
+// @Component({
+//   selector: 'ngbd-timepicker-basic',
+//   templateUrl: '../time-picker/time-picker.component.html'
+// })
+// export class NgbdTimepickerBasic {
+//   time = {hour: 13, minute: 30};
+// }

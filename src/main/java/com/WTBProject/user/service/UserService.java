@@ -87,6 +87,16 @@ public class UserService {
     return insertedUser.getId();
   }
 
+  public UserDTO findByNickAndEmail(String nick,String email){
+    Optional<User> foundUserOption = userRepository.findByNickAndEmail(nick, email);
+
+    if (foundUserOption.isPresent()) {
+      return modelMapper.map(foundUserOption.get(), UserDTO.class);
+    }
+    throw new IllegalArgumentException("User with such id not found");
+
+  }
+
 
 }
 

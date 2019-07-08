@@ -1,10 +1,13 @@
-<p>big-table-list works!</p>
 
 
-<h2>Big Tables List</h2>
-
-<div *ngFor="let bigTable of allBigTables">
-  {{allBigTables}}
-</div>
-
-<app-big-table-list></app-big-table-list>
+<table class="table table-bordered table-striped">
+  <tbody>
+  <tr *ngFor="let bigTable of allBigTables">
+    <div class="split left">
+      <div class="container-fluid">
+        <ngbd-modal-stacked></ngbd-modal-stacked>
+      </div>
+    </div>
+  </tr>
+  </tbody>
+</table>

@@ -27,4 +27,4 @@
 # insert into small_Table (id, is_table_big) values ("14", false);
 # insert into small_Table (id, is_table_big) values ("15", false);
 # insert into user (name, surname, nick, password, email) values ("tomek", "tomek", "tomek", "tomek", "nalesnniki@o2.pl");
-# insert into user (name, surname, nick, password, email) values ("admin", "admin", "admin", "admin", "admin@o2.pl");
+#     insert into user (name, surname, nick, password, email) values ("admin", "admin", "admin", "admin", "admin@o2.pl");

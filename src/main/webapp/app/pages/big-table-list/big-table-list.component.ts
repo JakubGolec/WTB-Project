@@ -9,15 +9,18 @@ import {BigTableService} from "app/services/big-table/big-table.service";
 })
 export class BigTableListService implements OnInit {
 
-  allBigTables : Array<any>
+  allBigTables : Array<any>;
 
   constructor(private bigTableService: BigTableService) {
   }
 
   ngOnInit() {
     this.bigTableService.getAllBigTables().subscribe(data => {
-      this.bigTableService = data;
-    });
+      this.allBigTables = data;
+    },
+      error => {
+      console.log(error)
+      });
   }
 
 }
