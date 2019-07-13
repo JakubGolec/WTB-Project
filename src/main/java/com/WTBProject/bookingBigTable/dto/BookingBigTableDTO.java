@@ -18,19 +18,28 @@ public class BookingBigTableDTO {
 
   private Date startDate;
   private Date endDate;
-  private UserDTO userDTO;
+  private User user;
   private BigTableDTO bigTableDTO;
-  private GameDTO gameDTO;
+  private Game game;
 
-  public BookingBigTableDTO(Date startDate, Date endDate, UserDTO userDTO, BigTableDTO bigTableDTO, GameDTO gameDTO) {
+  public BookingBigTableDTO(Long id, Date startDate, Date endDate, User user, BigTableDTO bigTableDTO, Game game) {
+    this.id = id;
     this.startDate = startDate;
     this.endDate = endDate;
-    this.userDTO = userDTO;
+    this.user = user;
     this.bigTableDTO = bigTableDTO;
-    this.gameDTO = gameDTO;
+    this.game = game;
   }
 
   public BookingBigTableDTO() {
+  }
+
+  public BookingBigTableDTO(Date startDate, Date endDate, User user, BigTableDTO bigTableDTO, Game game) {
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.user = user;
+    this.bigTableDTO = bigTableDTO;
+    this.game = game;
   }
 
   public Long getId() {
@@ -57,12 +66,12 @@ public class BookingBigTableDTO {
     this.endDate = endDate;
   }
 
-  public UserDTO getUserDTO() {
-    return userDTO;
+  public User getUser() {
+    return user;
   }
 
-  public void setUserDTO(UserDTO userDTO) {
-    this.userDTO = userDTO;
+  public void setUser(User user) {
+    this.user = user;
   }
 
   public BigTableDTO getBigTableDTO() {
@@ -73,11 +82,11 @@ public class BookingBigTableDTO {
     this.bigTableDTO = bigTableDTO;
   }
 
-  public GameDTO getGameDTO() {
-    return gameDTO;
+  public Game getGame() {
+    return game;
   }
 
-  public void setGameDTO(GameDTO gameDTO) {
-    this.gameDTO = gameDTO;
+  public void setGame(Game game) {
+    this.game = game;
   }
 }

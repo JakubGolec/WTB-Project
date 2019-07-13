@@ -24,6 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class BookingBigTableController {
@@ -40,8 +41,6 @@ public class BookingBigTableController {
   }
 
 
-
-
   @GetMapping("/allBigTableBookings")
   public String getAllBigTablesBookings(BookingBigTableRepository bookingBigTableRepository, Model model) {
     List<BookingBigTable> allBigTablesBookingsDTOS = (List<BookingBigTable>) bookingBigTableRepository.findAll();
@@ -50,13 +49,13 @@ public class BookingBigTableController {
   }
 
   @GetMapping("/allReservations")
-  @CrossOrigin(origins="http://localhost:4200")
-  public List<BookingBigTableDTO> allReservationsForTheTable(Model model) {
+  @CrossOrigin(origins = "http://localhost:4200")
+  public List<BookingBigTableDTO> allReservationsForTheTable(@RequestParam String bigTableId, Model model) {
     List<BookingBigTableDTO> allTableReservationsDTO = new ArrayList<>();
-    List<BookingBigTable> allTableReservations = bookingBigTableRepository.findAllByBigTable_Id("I");
+    List<BookingBigTable> allTableReservations = bookingBigTableRepository.findAllByBigTable_Id(bigTableId);
     if (!allTableReservations.isEmpty()) {
       for (BookingBigTable bT : allTableReservations) {
-        allTableReservationsDTO.add(modelmapper.map(bT, BookingBigTableDTO.class));
+        allTableReservationsDTO.add(new BookingBigTableDTO(bT.getId(), bT.getStartDate(), bT.getEndDate(), bT.getUser(), modelmapper.map(bT.getBigTable(), BigTableDTO.class), bT.getGame()));
       }
     }
     model.addAttribute("allReservations", allTableReservationsDTO);
@@ -64,13 +63,17 @@ public class BookingBigTableController {
   }
 
   @PostMapping("/reservation")
-  @CrossOrigin(origins="http://localhost:4200")
+  @CrossOrigin(origins = "http://localhost:4200")
   public void addBigTableReservation(@RequestParam("startDate") String startDate, @RequestParam("endDate") String endDate, Model model) throws ParseException {
     DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
-    Date date1 = (Date)formatter.parse(startDate);
-    Date date2 = (Date)formatter.parse(endDate);
-    BookingBigTableDTO bookingBigTableDTO = new BookingBigTableDTO(date1, date2, new UserDTO("gsv", "vdv", "vwswv", "vdsv", "fbsb"), new BigTableDTO("XX",true), new GameDTO("vdvdw", true));
-    bookingBigTableService.saveBigTableReservation(bookingBigTableDTO);
-    model.addAttribute("newReservation", bookingBigTableDTO);
+    Date date1 = formatter.parse(startDate);
+    Date date2 = formatter.parse(endDate);
+//    BookingBigTableDTO bookingBigTableDTO = new BookingBigTableDTO(date1, date2, new UserDTO("gsv", "vdv", "vwswv", "vdsv", "fbsb"), new BigTableDTO("XX", true), new GameDTO("vdvdw", true));
+//    bookingBigTableService.saveBigTableReservation(bookingBigTableDTO);
+//    model.addAttribute("newReservation", bookingBigTableDTO);
+//    List<BookingBigTableDTO> allReservations = bookingBigTableRepository.findAll().stream()
+//      .map(bookingBigTable -> modelmapper.map(bookingBigTable, BookingBigTableDTO.class))
+//      .collect(Collectors.toList());
+//    model.addAttribute("allReservations", allReservations);
   }
 }

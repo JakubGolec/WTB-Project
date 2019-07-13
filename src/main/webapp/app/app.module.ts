@@ -10,9 +10,9 @@ import {LoginComponent} from "app/pages/login/login.component";
 import {SignupComponent} from "app/pages/signup/signup.component";
 import {NgbdModalStackedModule} from "app/pages/modal-stacked/modal-stacked.module";
 import {BigTableService} from "app/services/big-table/big-table.service";
+import {StorageServiceModule} from "angular-webstorage-service";
+import {AngularWebStorageModule} from "angular-web-storage";
 import {BigTableReservationListService} from "app/pages/big-table-reservation-list/big-table-reservation-list.component";
-import {BookingBigTableService} from "app/services/bookingBigTable/booking-big-table.service";
-import { ReservationComponent } from './pages/reservation/reservation.component';
 
 @NgModule({
   declarations: [
@@ -27,10 +27,13 @@ import { ReservationComponent } from './pages/reservation/reservation.component'
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgbdModalStackedModule
+    NgbdModalStackedModule,
+    StorageServiceModule
   ],
   providers: [BigTableService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
+  entryComponents:[BigTableListService]
 })
 export class AppModule {
 }

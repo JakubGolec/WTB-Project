@@ -1,13 +1,5 @@
-
-
-<table class="table table-bordered table-striped">
-  <tbody>
-  <tr *ngFor="let bigTable of allBigTables">
-    <div class="split left">
-      <div class="container-fluid">
-        <ngbd-modal-stacked></ngbd-modal-stacked>
-      </div>
-    </div>
-  </tr>
-  </tbody>
-</table>
+<ul>
+  <li *ngFor="let bigTable of allBigTables">
+    <div class="badge" (click)="onSelect(bigTable)">Numer stolika: {{bigTable.id}}</div>
+  </li>
+</ul>

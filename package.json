@@ -28,6 +28,8 @@
     "@ng-bootstrap/ng-bootstrap": "^5.0.0-rc.1",
     "amazing-time-picker": "^1.8.0",
     "angular-moment-picker": "^0.10.2",
+    "angular-web-storage": "^7.0.0-beta.1",
+    "angular-webstorage-service": "^1.0.2",
     "bootstrap": "^4.3.1",
     "cldr-data": "^35.1.0",
     "document-register-element": "^1.7.2",
