@@ -14,10 +14,8 @@ const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
-  // { path: '', redirectTo: 'allBigTables', pathMatch: 'full' },
   { path: 'allBigTables', component: BigTableListService },
   { path: 'allReservations', component: BigTableReservationListService },
-
   // otherwise redirect to home
   { path: '**', redirectTo: '' },
   {path:'reservation', component:ReservationComponent}

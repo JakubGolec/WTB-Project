@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {BookingBigTable} from "app/services/bookingBigTable/booking-big-table";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BookingBigTableService} from "app/services/bookingBigTable/booking-big-table.service";
+import {BigTable} from "app/services/big-table/big-table";
 
 @Component({
   selector: 'app-pages-reservation',
@@ -9,6 +10,7 @@ import {BookingBigTableService} from "app/services/bookingBigTable/booking-big-t
   styleUrls: ['./reservation.component.css']
 })
 export class ReservationComponent {
+  @Input() bigTable: BigTable;
 
   bookingBigTable : BookingBigTable;
 

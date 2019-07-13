@@ -4,46 +4,6 @@ import {BigTableReservationListService} from "app/pages/big-table-reservation-li
 import {Import} from "@angular/core/schematics/utils/typescript/imports";
 import {BigTable} from "app/services/big-table/big-table";
 
-// MODAL nr 1 - właściwości
-// @Component({
-//   template: `
-//     <div class="modal-header">
-//       <h4 class="modal-title">Rezerwacja stolika</h4>
-//       <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-//         <span aria-hidden="true">&times;</span>
-//       </button>
-//     </div>
-//     <div class="modal-body">
-//
-//       <app-big-table-reservation-list></app-big-table-reservation-list>
-//
-//       <p>
-//         <button class="btn btn-lg btn-outline-primary" (click)="open()">Zarezerwuj</button>
-//       </p>
-//     </div>
-//     <div class="modal-footer">
-//       <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Zamknij</button>
-//     </div>
-//   `
-//
-// })
-
-// export class NgbdModal1Content implements OnInit{
-//   @Input() public selectedBigTable;
-//
-//   constructor(private modalService: NgbModal, public activeModal: NgbActiveModal) {
-//   }
-//
-//   ngOnInit(): void {
-//     console.log(this.selectedBigTable)
-//   }
-//
-//   open() {
-//     this.modalService.open(NgbdModal2Content, {
-//       size: 'sm'
-//     })
-//   }
-// }
 
 // MODAL nr 2 - właściwości
 @Component({
@@ -64,7 +24,6 @@ import {BigTable} from "app/services/big-table/big-table";
   `
 })
 export class NgbdModal2Content {
-  @Input() selectedBigTable:BigTable;
 
   constructor(public activeModal: NgbActiveModal) {
   }
@@ -77,9 +36,6 @@ export class NgbdModal2Content {
 export class NgbdModalStacked {
   constructor(private modalService: NgbModal) {
   }
-
-
-
 
 }
 
