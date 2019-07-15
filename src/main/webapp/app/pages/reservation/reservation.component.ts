@@ -19,6 +19,7 @@ export class ReservationComponent {
   }
 
   onSubmit() {
+    console.log(this.bigTable);
     this.bookingBigTableService.addReservation(this.bookingBigTable);
      // .subscribe(result => this.gotoAllReservations());
   }

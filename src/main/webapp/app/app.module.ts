@@ -8,11 +8,14 @@ import {AppRoutingModule} from "app/app.routing-module";
 import {HomeComponent} from "app/pages/home/home.component";
 import {LoginComponent} from "app/pages/login/login.component";
 import {SignupComponent} from "app/pages/signup/signup.component";
-import {NgbdModalStackedModule} from "app/pages/modal-stacked/modal-stacked.module";
 import {BigTableService} from "app/services/big-table/big-table.service";
 import {StorageServiceModule} from "angular-webstorage-service";
 import {AngularWebStorageModule} from "angular-web-storage";
 import {BigTableReservationListService} from "app/pages/big-table-reservation-list/big-table-reservation-list.component";
+import {BookingBigTableService} from "app/services/bookingBigTable/booking-big-table.service";
+import {ReservationComponent} from "app/pages/reservation/reservation.component";
+import {NgbdModalStacked} from "app/pages/modal-stacked/modal-stacked";
+import {NgbdModalStackedModule} from "app/pages/modal-stacked/modal-stacked.module";
 
 @NgModule({
   declarations: [
@@ -21,19 +24,21 @@ import {BigTableReservationListService} from "app/pages/big-table-reservation-li
     HomeComponent,
     LoginComponent,
     SignupComponent,
+    NgbdModalStacked
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgbdModalStackedModule,
-    StorageServiceModule
+    StorageServiceModule,
+    NgbdModalStackedModule
+
   ],
-  providers: [BigTableService],
+  providers: [BigTableService, BookingBigTableService],
   bootstrap: [AppComponent],
 
-  entryComponents:[BigTableListService]
+  entryComponents: [BigTableListService]
 })
 export class AppModule {
 }
