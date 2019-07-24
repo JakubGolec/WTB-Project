@@ -8,6 +8,7 @@ import {BigTableListService} from "app/pages/big-table-list/big-table-list.compo
 import {BookingBigTableService} from "app/services/bookingBigTable/booking-big-table.service";
 import {BigTableReservationListService} from "app/pages/big-table-reservation-list/big-table-reservation-list.component";
 import {ReservationComponent} from "app/pages/reservation/reservation.component";
+import {GameListComponent} from "app/pages/game-list/game-list.component";
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'allReservations', component: BigTableReservationListService },
   // otherwise redirect to home
   { path: '**', redirectTo: '' },
-  {path:'reservation', component:ReservationComponent}
+  {path:'reservation', component:ReservationComponent},
+  {path:'allGames', component:GameListComponent}
 
 ];
 

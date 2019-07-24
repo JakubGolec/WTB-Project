@@ -16,6 +16,8 @@ import {BookingBigTableService} from "app/services/bookingBigTable/booking-big-t
 import {ReservationComponent} from "app/pages/reservation/reservation.component";
 import {NgbdModalStacked} from "app/pages/modal-stacked/modal-stacked";
 import {NgbdModalStackedModule} from "app/pages/modal-stacked/modal-stacked.module";
+import { GameListComponent } from './pages/game-list/game-list.component';
+import {GameService} from "app/services/game/game-service";
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {NgbdModalStackedModule} from "app/pages/modal-stacked/modal-stacked.modu
     HomeComponent,
     LoginComponent,
     SignupComponent,
-    NgbdModalStacked
+    NgbdModalStacked,
+    GameListComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,7 @@ import {NgbdModalStackedModule} from "app/pages/modal-stacked/modal-stacked.modu
     NgbdModalStackedModule
 
   ],
-  providers: [BigTableService, BookingBigTableService],
+  providers: [BigTableService, BookingBigTableService, GameService],
   bootstrap: [AppComponent],
 
   entryComponents: [BigTableListService]

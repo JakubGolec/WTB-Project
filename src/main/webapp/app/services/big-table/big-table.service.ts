@@ -13,7 +13,7 @@ export class BigTableService {
 
   constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private http: HttpClient) { }
 
-  getAllBigTables(): Observable<BigTable[]> {
+  public getAllBigTables(): Observable<BigTable[]> {
     return this.http.get<BigTable[]>('http://localhost:8080/allBigTables');
   }
 

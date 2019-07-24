@@ -3,6 +3,7 @@ import {BookingBigTable} from "app/services/bookingBigTable/booking-big-table";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BookingBigTableService} from "app/services/bookingBigTable/booking-big-table.service";
 import {BigTable} from "app/services/big-table/big-table";
+import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-pages-reservation',
@@ -14,7 +15,7 @@ export class ReservationComponent {
 
   bookingBigTable : BookingBigTable;
 
-  constructor(private route: ActivatedRoute, private router: Router, private bookingBigTableService : BookingBigTableService) {
+  constructor(private route: ActivatedRoute, private router: Router, private bookingBigTableService : BookingBigTableService, public activeModal: NgbActiveModal) {
     this.bookingBigTable = new BookingBigTable();
   }
 
