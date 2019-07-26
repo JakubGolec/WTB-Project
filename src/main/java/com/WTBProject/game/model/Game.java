@@ -3,6 +3,7 @@ package com.WTBProject.game.model;
 import com.WTBProject.bookingBigTable.model.BookingBigTable;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -17,8 +18,8 @@ public class Game {
     @Column(nullable = false)
     Boolean isBigTableRequired;
 
-    @OneToOne(mappedBy = "game")
-    private BookingBigTable booking;
+    @OneToMany(mappedBy = "game")
+    private List<BookingBigTable> bookingBigTable;
 
     public Game(String name, Boolean isBigTableRequired) {
         this.name = name;

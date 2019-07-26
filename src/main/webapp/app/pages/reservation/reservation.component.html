@@ -1,0 +1,29 @@
+<div class="modal-header">
+  <h4 class="modal-title">Wybierz godziny rezerwacji</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.close('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="card my-5">
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #reservationForm="ngForm">
+        <div class="form-group">
+          <label for="startDate">Początek</label>
+          <input type="datetime-local" [(ngModel)]="bookingBigTable.startDate"
+                 class="form-control" id="startDate" name="startDate" placeholder="DD-MM-RRRR-HH-mm"
+                 required #startDate="ngModel">
+        </div>
+        <div [hidden]="!startDate.pristine" class="alert alert-danger">Data rozpoczęcia jest wymagana</div>
+        <div class="form-group">
+          <label for="endDate">Koniec</label>
+          <input type="datetime-local" [(ngModel)]="bookingBigTable.endDate"
+                 class="form-control" id="endDate" name="endDate" placeholder="DD-MM-RRRR-HH-mm"
+                 required #endDate="ngModel">
+          <div [hidden]="!endDate.pristine" class="alert alert-danger">Data zakończenia jest wymagana</div>
+        </div>
+        <button type="submit" [disabled]="!reservationForm.form.valid" class="btn btn-info">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

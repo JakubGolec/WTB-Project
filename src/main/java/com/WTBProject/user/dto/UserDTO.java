@@ -23,7 +23,16 @@ public class UserDTO {
   public UserDTO() {
   }
 
-    public Long getId() {
+  public UserDTO(Long id, String name, String surname, String nick, String password, String email) {
+    this.id = id;
+    this.name = name;
+    this.surname = surname;
+    this.nick = nick;
+    this.password = password;
+    this.email = email;
+  }
+
+  public Long getId() {
         return id;
     }
 

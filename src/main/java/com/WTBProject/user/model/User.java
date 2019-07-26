@@ -3,6 +3,7 @@ package com.WTBProject.user.model;
 import com.WTBProject.bookingBigTable.model.BookingBigTable;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
@@ -19,8 +20,8 @@ public class User {
     String email;
 
 
-    @OneToOne(mappedBy = "user")
-    private BookingBigTable booking;
+    @OneToMany(mappedBy = "user")
+    private List<BookingBigTable> bookingBigTable;
 
 
 
