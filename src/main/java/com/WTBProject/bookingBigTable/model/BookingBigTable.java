@@ -6,38 +6,28 @@ import com.WTBProject.user.model.User;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @NamedQuery(name = "BookingBigTable.getReservationsForTheTable", query = "Select bbt.startDate, bbt.endDate from BookingBigTable bbt where bbt.id = :id")
 public class BookingBigTable {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
   private Date startDate;
   private Date endDate;
 
 
-  @OneToOne(fetch = FetchType.LAZY)
+  @ManyToOne(cascade = CascadeType.PERSIST)
   private User user;
 
-  @OneToOne(fetch = FetchType.LAZY)
+  @ManyToOne(cascade = CascadeType.PERSIST)
   private BigTable bigTable;
 
-  @OneToOne(fetch = FetchType.LAZY)
+  @ManyToOne(cascade = CascadeType.PERSIST)
   private Game game;
-
-  public BookingBigTable(Date startDate, Date endDate, User user, BigTable bigTable, Game game) {
-    this.startDate = startDate;
-    this.endDate = endDate;
-    this.user = user;
-    this.bigTable = bigTable;
-    this.game = game;
-  }
-
-  public BookingBigTable() {
-  }
 
   public Long getId() {
     return id;

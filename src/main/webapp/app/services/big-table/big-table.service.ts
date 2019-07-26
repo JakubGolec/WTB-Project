@@ -1,17 +1,21 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {BigTable} from "app/services/big-table/big-table";
+import {LOCAL_STORAGE, WebStorageService} from "angular-webstorage-service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BigTableService {
 
-  private baseUrl = '/allBigTables';
+  public data:any=[];
 
-  constructor(private http: HttpClient) { }
+  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService, private http: HttpClient) { }
 
-  getAllBigTables(): Observable<any> {
-    return this.http.get('${this.baseUrl}');
+  public getAllBigTables(): Observable<BigTable[]> {
+    return this.http.get<BigTable[]>('http://localhost:8080/allBigTables');
   }
+
+
 }

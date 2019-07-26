@@ -1,10 +1,5 @@
-<p>big-table-list works!</p>
-
-
-<h2>Big Tables List</h2>
-
-<div *ngFor="let bigTable of allBigTables">
-  {{allBigTables}}
-</div>
-
-<app-big-table-list></app-big-table-list>
+<ul>
+  <li *ngFor="let bigTable of allBigTables">
+    <div class="badge" (click)="onSelect(bigTable)">Numer stolika: {{bigTable.id}}</div>
+  </li>
+</ul>
